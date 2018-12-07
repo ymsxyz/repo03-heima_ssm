@@ -1,6 +1,7 @@
 package cn.itcast.ssm.domain;
 
 import cn.itcast.ssm.utils.DateUtils;
+import org.apache.ibatis.annotations.Insert;
 
 import java.util.Date;
 import java.util.List;
@@ -11,9 +12,9 @@ public class Orders {
     private String orderNum;
     private Date orderTime;
     private String orderTimeStr;
-    private int orderStatus;
+    private Integer orderStatus;
     private String orderStatusStr;
-    private int peopleCount;
+    private Integer peopleCount;
     private Product product;
     private List<Traveller> travellers;
     private Member member;
@@ -69,19 +70,19 @@ public class Orders {
         this.orderTimeStr = orderTimeStr;
     }
 
-    public int getOrderStatus() {
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public int getPeopleCount() {
+    public Integer getPeopleCount() {
         return peopleCount;
     }
 
-    public void setPeopleCount(int peopleCount) {
+    public void setPeopleCount(Integer peopleCount) {
         this.peopleCount = peopleCount;
     }
 

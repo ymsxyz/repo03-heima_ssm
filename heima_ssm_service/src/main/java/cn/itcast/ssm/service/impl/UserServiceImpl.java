@@ -72,4 +72,19 @@ public class UserServiceImpl implements IUserService {
         UserInfo user = userDao.findById(userId);
         return user;
     }
+
+    //查询可添加角色集合
+    @Override
+    public List<Role> findOtherRoles(String id) throws Exception {
+        List<Role> roleList = userDao.findOtherRoles(id);
+        return roleList;
+    }
+
+    //用户和角色集合添加关联
+    @Override
+    public void addRoleToUser(String userId, String[] ids) throws Exception {
+        for (String roleId : ids) {
+            userDao.addRoleToUser(userId, roleId);
+        }
+    }
 }

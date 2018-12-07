@@ -7,6 +7,10 @@
     http://www.springframework.org/schema/security          
     http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<!--开启权限控制:3种方式,不起作用,配置到spring-mvc.xml中-->
+	<!--<security:global-method-security jsr250-annotations="enabled"/>-->
+	<!--<security:global-method-security secured-annotations="enabled"/>-->
+	<!--<security:global-method-security pre-post-annotations="disabled"/>-->
     <!-- 配置不拦截的资源 -->
     <security:http pattern="/login.jsp" security="none"/>
     <security:http pattern="/failer.jsp" security="none"/>
@@ -19,10 +23,10 @@
     	auto-config="true"	不用自己编写登录的页面，框架提供默认登录页面
     	use-expressions="false"	是否使用SPEL表达式（没学习过）
     -->
-    <security:http auto-config="true" use-expressions="false">
+    <security:http auto-config="true" use-expressions="true">
     	<!-- 配置具体的拦截的规则 pattern="请求路径的规则" access="访问系统的人，必须有ROLE_USER的角色"
     		注意：access内角色必须ROLE_开头-->
-    	<security:intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER"/>
+    	<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_CEO','ROLE_ADMIN','ROLE_USER')"/>
     	<!-- 定义跳转的具体的页面:
     	 	登录页面
     	 	登录路径
